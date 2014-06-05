@@ -1,12 +1,10 @@
 #
-class brl:python {
+class brl::python {
 
-  include brl::base
-
-  package { 'pip': 
-    ensure   => latest, 
+  package { 'pip':
+    ensure   => latest,
     provider => pip,
-    require  => Class['brl::base'] 
+    require  => Class['brl::base']
   }
 
   python::pip { 'scipy':  # pyms

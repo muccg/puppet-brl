@@ -1,7 +1,6 @@
-# 
+#
 class brl::r {
 
-  include brl::base
   class { 'repo::rdebian': release => 'unstable' }
   include repo::rcran
 
@@ -10,15 +9,16 @@ class brl::r {
   package { $absent_packages:
     ensure => absent
   }
-  
+
   class { 'r':
     pkg     => 'r-base=3.1.0-1saucy0',
     require => Package[$absent_packages]
   }
 
-  $r_packages = ['r-cran-kernsmooth', 'r-cran-foreign', 'r-cran-boot', 'r-cran-cluster', 'r-cran-class',
-                 'r-cran-mass', 'r-cran-matrix', 'r-cran-mgcv', 'r-cran-nlme', 'r-cran-nnet', 'r-cran-rpart',
-                 'r-cran-spatial', 'r-cran-vgam', ]
+  $r_packages = [
+    'r-cran-kernsmooth', 'r-cran-foreign', 'r-cran-boot', 'r-cran-cluster', 'r-cran-class',
+    'r-cran-mass', 'r-cran-matrix', 'r-cran-mgcv', 'r-cran-nlme', 'r-cran-nnet', 'r-cran-rpart',
+    'r-cran-spatial', 'r-cran-vgam', ]
 
   package { $r_packages:
     ensure  => installed,

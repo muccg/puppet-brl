@@ -1,8 +1,8 @@
 #
 node brl::starcluster {
 
-  file { "/etc/environment":
-    content => template("brl/environment");
+  file { '/etc/environment':
+    content => template('brl/environment');
   }
 
   # 13.10 replace portmap with rpcbind, starcluster wants to start portmap
