@@ -1,5 +1,5 @@
 #
-node brl::starcluster {
+class brl::starcluster {
 
   file { '/etc/environment':
     content => template('brl/environment');

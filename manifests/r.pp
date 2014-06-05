@@ -10,7 +10,7 @@ class brl::r {
     ensure => absent
   }
 
-  class { 'r':
+  class { '::r':
     pkg     => 'r-base=3.1.0-1saucy0',
     require => Package[$absent_packages]
   }
@@ -22,19 +22,19 @@ class brl::r {
 
   package { $r_packages:
     ensure  => installed,
-    require => Class['r']
+    require => Class['::r']
   }
 
-  r::biocpackage { 'BiocGenerics': require => Class['r'] } ->
-  r::biocpackage { 'Biobase': require => Class['r'] } ->
-  r::biocpackage { 'pcaMethods': require => Class['r'] } ->
-  r::biocpackage { 'limma': require => Class['r'] } ->
-  r::biocpackage { 'statmod': require => Class['r'] } ->
+  r::biocpackage { 'BiocGenerics': require => Class['::r'] } ->
+  r::biocpackage { 'Biobase': require => Class['::r'] } ->
+  r::biocpackage { 'pcaMethods': require => Class['::r'] } ->
+  r::biocpackage { 'limma': require => Class['::r'] } ->
+  r::biocpackage { 'statmod': require => Class['::r'] } ->
 
-  r::package { 'abind': require => Class['r'], dependencies => true } ->
-  r::package { 'gdata': require => Class['r'], dependencies => true } ->
-  r::package { 'h5r': require => Class['r'], dependencies => true } ->
-  r::package { 'crmn': require => Class['r'], dependencies => true } ->
-  r::package { 'metabolomics': require => Class['r'], dependencies => true }
-  r::package { 'plotrix': require => Class['r'], dependencies => true }
+  r::package { 'abind': require => Class['::r'], dependencies => true } ->
+  r::package { 'gdata': require => Class['::r'], dependencies => true } ->
+  r::package { 'h5r': require => Class['::r'], dependencies => true } ->
+  r::package { 'crmn': require => Class['::r'], dependencies => true } ->
+  r::package { 'metabolomics': require => Class['::r'], dependencies => true }
+  r::package { 'plotrix': require => Class['::r'], dependencies => true }
 }
