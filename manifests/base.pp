@@ -26,6 +26,7 @@ class brl::base {
                 'bowtie', 'bowtie-examples', 'clustalx', 'seaview',
                 'graphviz-doc', 'libmath-random-perl', 'libxml-sax-expatxs-perl', 'libgd-tools',
                 'uuid', 'libapache2-mod-perl2', 'libmime-lite-perl', 'libnet-jabber-perl',
+                'libperlio-gzip-perl',
                 'picard-tools', 'soapdenovo', 'soapdenovo2', 'mira-assembler',
                 'tk8.4', 'tk8.4-dev',  # staden
                 'circos', 'graphicsmagick',
