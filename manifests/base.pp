@@ -32,6 +32,7 @@ class brl::base {
                 'circos', 'graphicsmagick',
                 'unrar',
                 'netcdf-bin',  # pyms
+                'libnetcdf-dev',  # mzR
                 ]
 
   package { $packages:
