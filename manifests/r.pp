@@ -30,6 +30,8 @@ class brl::r {
   r::biocpackage { 'pcaMethods': require => Class['::r'] } ->
   r::biocpackage { 'limma': require => Class['::r'] } ->
   r::biocpackage { 'statmod': require => Class['::r'] } ->
+  r::biocpackage { 'xcms': require => Class['::r'] } ->
+  
 
   r::package { 'abind': require => Class['::r'], dependencies => true } ->
   r::package { 'gdata': require => Class['::r'], dependencies => true } ->
