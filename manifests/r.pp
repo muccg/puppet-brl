@@ -31,6 +31,7 @@ class brl::r {
   r::biocpackage { 'limma': require => Class['::r'] } ->
   r::biocpackage { 'statmod': require => Class['::r'] } ->
   r::biocpackage { 'xcms': require => Class['::r'] } ->
+  r::biocpackage { 'multtest': require => Class['::r'] } ->
   
 
   r::package { 'abind': require => Class['::r'], dependencies => true } ->
