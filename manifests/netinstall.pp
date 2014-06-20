@@ -1,6 +1,23 @@
 #
 class brl::netinstall ($download_url=undef) {
 
+  puppi::netinstall { 'mauve':
+    url                 => "${download_url}/mauve_linux_2.3.1.tar.gz",
+    extracted_dir       => 'mauve_2.3.1',
+    destination_dir     => '/usr/local',
+    owner               => 'root',
+    group               => 'root',
+    work_dir            => '/usr/local/src',
+  }
+
+  puppi::netinstall { 'blat':
+    url                 => "${download_url}/blat-3.5.tar.gz",
+    destination_dir     => '/usr/local',
+    owner               => 'root',
+    group               => 'root',
+    work_dir            => '/usr/local/src',
+  }
+
   puppi::netinstall { 'pycdf':
     url                 => "${download_url}/pycdf-0.6-3b.tar.gz",
     destination_dir     => '/usr/local',
@@ -25,6 +42,12 @@ class brl::netinstall ($download_url=undef) {
     owner               => 'root',
     group               => 'root',
     work_dir            => '/usr/local/src',
+  }
+
+  file { '/usr/local/pyms':
+    ensure => 'link',
+    target => '/usr/local/pyms-r379',
+    require => Puppi::Netinstall['pyms']
   }
 
   puppi::netinstall { 'bowtie2':
