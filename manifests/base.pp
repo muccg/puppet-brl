@@ -30,7 +30,7 @@ class brl::base {
                 'picard-tools', 'soapdenovo', 'soapdenovo2', 'mira-assembler',
                 'tk8.4', 'tk8.4-dev',  # staden
                 'circos', 'graphicsmagick',
-                'unrar',
+                'unrar', 'gnuplot-x11',
                 'netcdf-bin',  # pyms
                 'libnetcdf-dev',  # mzR
                 ]
