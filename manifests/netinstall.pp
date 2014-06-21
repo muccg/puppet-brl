@@ -1,6 +1,35 @@
 #
 class brl::netinstall ($download_url=undef) {
 
+  puppi::netinstall { 'trinity':
+    url                 => "${download_url}/trinityrnaseq_r20140413p1.tar.gz",
+    destination_dir     => '/usr/local',
+    owner               => 'root',
+    group               => 'root',
+    work_dir            => '/usr/local/src',
+    postextract_command => 'make'
+  }
+
+  puppi::netinstall { 'trans-ABySS':
+    url                 => "${download_url}/trans-ABySS-v1.4.8_20130916.tar.gz",
+    extracted_dir       => 'trans-ABySS-v1.4.8',
+    destination_dir     => '/usr/local',
+    owner               => 'root',
+    group               => 'root',
+    work_dir            => '/usr/local/src',
+  }
+
+  puppi::netinstall { 'oases':
+    url                 => "${download_url}/oases_0.2.08.tgz",
+    extracted_dir       => 'oases_0.2.8',
+    destination_dir     => '/usr/local',
+    owner               => 'root',
+    group               => 'root',
+    work_dir            => '/usr/local/src',
+    postextract_command => "make oases 'VELVET_DIR=/usr/local/velvet_1.2.10' 'CATEGORIES=4' 'MAXKMERLENGTH=99' 'OPENMP=1' 'BUNDLEDZLIB=1' 'LONGSEQUENCES=1'"
+    require             => Puppi::Netinstall['velvet'],
+  }
+
   puppi::netinstall { 'mauve':
     url                 => "${download_url}/mauve_linux_2.3.1.tar.gz",
     extracted_dir       => 'mauve_2.3.1',
