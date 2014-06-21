@@ -26,7 +26,7 @@ class brl::netinstall ($download_url=undef) {
     owner               => 'root',
     group               => 'root',
     work_dir            => '/usr/local/src',
-    postextract_command => "make oases 'VELVET_DIR=/usr/local/velvet_1.2.10' 'CATEGORIES=4' 'MAXKMERLENGTH=99' 'OPENMP=1' 'BUNDLEDZLIB=1' 'LONGSEQUENCES=1'"
+    postextract_command => "make oases 'VELVET_DIR=/usr/local/velvet_1.2.10' 'CATEGORIES=4' 'MAXKMERLENGTH=99' 'OPENMP=1' 'BUNDLEDZLIB=1' 'LONGSEQUENCES=1'",
     require             => Puppi::Netinstall['velvet'],
   }
 
@@ -74,8 +74,8 @@ class brl::netinstall ($download_url=undef) {
   }
 
   file { '/usr/local/pyms':
-    ensure => 'link',
-    target => '/usr/local/pyms-r379',
+    ensure  => 'link',
+    target  => '/usr/local/pyms-r379',
     require => Puppi::Netinstall['pyms']
   }
 

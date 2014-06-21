@@ -33,7 +33,6 @@ class brl::r {
   r::biocpackage { 'mzR': require => Class['::r'] } ->
   r::biocpackage { 'xcms': require => Class['::r'] } ->
   r::biocpackage { 'multtest': require => Class['::r'] } ->
-  
 
   r::package { 'abind': require => Class['::r'], dependencies => true } ->
   r::package { 'gdata': require => Class['::r'], dependencies => true } ->
