@@ -1,6 +1,6 @@
 #
 class brl::netinstall (
-  $download_url    = undef, 
+  $download_url    = undef,
   $destination_dir = '/usr/local',
   $work_dir        = '/usr/local/src',
   $owner           = 'root',
