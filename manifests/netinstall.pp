@@ -62,6 +62,12 @@ class brl::netinstall (
     postextract_command => 'python setup.py install'
   }
 
+  file { "${destination_dir}/pycdf":
+    ensure  => 'link',
+    target  => "${destination_dir}/pycdf-0.6-3b",
+    require => Puppi::Netinstall['pycdf']
+  }
+
   puppi::netinstall { 'Pycluster':
     url                 => "${download_url}/Pycluster-1.52.tar.gz",
     destination_dir     => $destination_dir,
