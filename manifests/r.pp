@@ -18,7 +18,7 @@ class brl::r {
   $r_packages = [
     'r-cran-kernsmooth', 'r-cran-foreign', 'r-cran-boot', 'r-cran-cluster', 'r-cran-class',
     'r-cran-mass', 'r-cran-matrix', 'r-cran-mgcv', 'r-cran-nlme', 'r-cran-nnet', 'r-cran-rpart',
-    'r-cran-spatial', 'r-cran-vgam', ]
+    'r-cran-spatial', 'r-cran-vgam', 'r-cran-getopt']
 
   package { $r_packages:
     ensure  => installed,
