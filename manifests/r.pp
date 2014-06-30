@@ -33,7 +33,14 @@ class brl::r {
   r::biocpackage { 'mzR': require => Class['::r'] } ->
   r::biocpackage { 'xcms': require => Class['::r'] } ->
   r::biocpackage { 'multtest': require => Class['::r'] } ->
+  r::biocpackage { 'CAMERA': require => Class['::r'] } ->
 
+  r::package { 'caret': require => Class['::r'], dependencies => true } ->
+  r::package { 'gplots': require => Class['::r'], dependencies => true } ->
+  r::package { 'e1071': require => Class['::r'], dependencies => true } ->
+  r::package { 'rgl': require => Class['::r'], dependencies => true } ->
+  r::package { 'plsgenomics': require => Class['::r'], dependencies => true } ->
+  r::package { 'agricolae': require => Class['::r'], dependencies => true } ->
   r::package { 'abind': require => Class['::r'], dependencies => true } ->
   r::package { 'gdata': require => Class['::r'], dependencies => true } ->
   r::package { 'h5r': require => Class['::r'], dependencies => true } ->

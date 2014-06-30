@@ -33,6 +33,7 @@ class brl::base {
                 'unrar', 'gnuplot-x11',
                 'netcdf-bin',  # pyms
                 'libnetcdf-dev',  # mzR
+                'libglu1-mesa-dev', 'mesa-common-dev',  # rgl
                 ]
 
   package { $packages:
