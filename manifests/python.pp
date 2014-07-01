@@ -17,6 +17,11 @@ class brl::python {
     require => Package['pip']
   }
 
+  python::pip { 'bcbio-gff==0.4':
+    pkgname => 'bcbio-gff==0.4',
+    require => Package['pip']
+  }
+
   python::pip { 'awscli==1.3.7':
     pkgname => 'awscli==1.3.7',
     require => Package['pip']
