@@ -35,6 +35,11 @@ class brl::netinstall (
     postextract_command => 'make'
   }
 
+  # jellyfish, when called from trinity, needs to write to this directory
+  file { "${destination_dir}/trinityrnaseq_r20140413p1/trinity-plugins/jellyfish/bin/.libs/":
+      mode => '0777'
+  }
+
   puppi::netinstall { 'trans-ABySS':
     url                 => "${download_url}/trans-ABySS-v1.4.8_20130916.tar.gz",
     extracted_dir       => 'trans-ABySS-v1.4.8',
