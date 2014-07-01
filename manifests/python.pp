@@ -17,6 +17,11 @@ class brl::python {
     require => Package['pip']
   }
 
+  python::pip { 'distribute>=0.6.49':
+    pkgname => 'distribute>=0.6.49',
+    require => Package['pip']
+  } ->
+
   python::pip { 'bcbio-gff==0.4':
     pkgname => 'bcbio-gff==0.4',
     require => Package['pip']
