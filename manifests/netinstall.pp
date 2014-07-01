@@ -33,7 +33,7 @@ class brl::netinstall (
     group               => $group,
     work_dir            => $work_dir,
     postextract_command => 'make'
-  }
+  } ->
 
   # jellyfish, when called from trinity, needs to write to this directory
   file { "${destination_dir}/trinityrnaseq_r20140413p1/trinity-plugins/jellyfish/bin/.libs/":
@@ -267,7 +267,7 @@ class brl::netinstall (
     group               => $group,
     work_dir            => $work_dir,
     path                => "${destination_dir}/abyss-1.3.7:/bin:/sbin:/usr/bin:/usr/sbin",
-    postextract_command => 'configure && make'
+    postextract_command => 'configure --prefix=/usr/local/abyss/1.3.7 && make install',
   } ->
 
   puppi::netinstall { 'quake':
