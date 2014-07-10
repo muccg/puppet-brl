@@ -35,6 +35,7 @@ class brl::r {
   r::biocpackage { 'multtest': require => Class['::r'] } ->
   r::biocpackage { 'CAMERA': require => Class['::r'] } ->
 
+  r::package { 'argparse': require => Class['::r'], dependencies => true } ->
   r::package { 'caret': require => Class['::r'], dependencies => true } ->
   r::package { 'gplots': require => Class['::r'], dependencies => true } ->
   r::package { 'e1071': require => Class['::r'], dependencies => true } ->
@@ -45,6 +46,6 @@ class brl::r {
   r::package { 'gdata': require => Class['::r'], dependencies => true } ->
   r::package { 'h5r': require => Class['::r'], dependencies => true } ->
   r::package { 'crmn': require => Class['::r'], dependencies => true } ->
-  r::package { 'metabolomics': require => Class['::r'], dependencies => true }
+  r::package { 'metabolomics': require => Class['::r'], dependencies => true } ->
   r::package { 'plotrix': require => Class['::r'], dependencies => true }
 }
