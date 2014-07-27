@@ -11,7 +11,7 @@ class brl::r {
   }
 
   class { '::r':
-    pkg     => 'r-base=3.1.0-1saucy0',
+    pkg     => 'r-base',
     require => Package[$absent_packages]
   }
 

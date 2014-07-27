@@ -24,7 +24,7 @@ class brl::base {
                 'hdf5-tools', 'libhdf5-serial-dev',
                 'bioperl', 'fasttree', 'hmmer', 'gmap', 'bwa', 'phylip', 'bowtie2', 'bowtie2-examples',
                 'bowtie', 'bowtie-examples', 'clustalx', 'seaview',
-                'graphviz-doc', 'libmath-random-perl', 'libxml-sax-expatxs-perl', 'libgd-tools',
+                'graphviz-doc', 'libxml-sax-expatxs-perl', 'libgd-tools',
                 'uuid', 'libapache2-mod-perl2', 'libmime-lite-perl', 'libnet-jabber-perl',
                 'libperlio-gzip-perl',
                 'picard-tools', 'soapdenovo', 'soapdenovo2', 'mira-assembler',
@@ -34,11 +34,14 @@ class brl::base {
                 'netcdf-bin',  # pyms
                 'libnetcdf-dev',  # mzR
                 'libglu1-mesa-dev', 'mesa-common-dev',  # rgl
+                'ldc',  # sambamba
                 ]
 
   package { $packages:
     ensure => installed,
   }
+
+  perl::cpan::module { 'Math::Random': }
 
   exec { 'mysqld stop':
     command => '/usr/sbin/service mysql stop || true',
