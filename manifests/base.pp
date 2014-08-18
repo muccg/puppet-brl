@@ -4,8 +4,6 @@ class brl::base {
   include ccgcommon
   include repo::multiverseubuntu
 
-  $absent_packages = ['apache2', 'mysql-server-5.5', 'nginx-full']
-
   $packages = [ 'dos2unix',
                 'libboost-all-dev',
                 'libfreetype6', 'libfreetype6-dev',
@@ -44,22 +42,6 @@ class brl::base {
   }
 
   perl::cpan::module { 'Math::Random': }
-
-  exec { 'mysqld stop':
-    command => '/usr/sbin/service mysql stop || true',
-  } ->
-
-  exec { 'nginx stop':
-    command => '/usr/sbin/service nginx stop || true',
-  } ->
-
-  exec { 'apache2 stop':
-    command => '/usr/sbin/service apache2 stop || true',
-  } ->
-
-  package { $absent_packages:
-    ensure => absent
-  }
 
   file { '/usr/local':
     ensure => directory;
