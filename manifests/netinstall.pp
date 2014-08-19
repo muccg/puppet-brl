@@ -7,17 +7,6 @@ class brl::netinstall (
   $group           = 'root',
   ) {
 
-  puppi::netinstall { 'MAIT':
-    url                 => "${download_url}/MAIT_0.16.tar.gz",
-    destination_dir     => $destination_dir,
-    extracted_dir       => 'MAIT',
-    owner               => $owner,
-    group               => $group,
-    work_dir            => $work_dir,
-    postextract_command => 'R CMD INSTALL .',
-    require             => [Class['r'], Class['brl::base']]
-  }
-
   puppi::netinstall { 'EGA_Secure_Download_Client':
     url                 => "${download_url}/EGA_Secure_Download_Client.0.3.5.tar.gz",
     destination_dir     => $destination_dir,
@@ -347,27 +336,6 @@ class brl::netinstall (
     group               => $group,
     work_dir            => $work_dir,
     require             => Class['brl::base']
-  }
-
-  puppi::netinstall { 'h5r':
-    url                 => "${download_url}/h5r_1.4.1.tar.gz",
-    destination_dir     => $destination_dir,
-    extracted_dir       => 'h5r',
-    owner               => $owner,
-    group               => $group,
-    work_dir            => $work_dir,
-    postextract_command => 'R CMD INSTALL .',
-    require             => [Class['r'], Class['brl::base']]
-  }
-
-  puppi::netinstall { 'pbh5':
-    url                 => "${download_url}/pacbio/r-pbh5/R-pbh5-master.tar.gz",
-    destination_dir     => $destination_dir,
-    owner               => $owner,
-    group               => $group,
-    work_dir            => $work_dir,
-    postextract_command => 'R CMD INSTALL .',
-    require             => [Class['r'], Class['brl::base'], Puppi::Netinstall['h5r']]
   }
 
   puppi::netinstall { 'wgs':

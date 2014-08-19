@@ -1,5 +1,11 @@
 #
-class brl::r {
+class brl::r (
+  $download_url    = undef,
+  $destination_dir = '/usr/local',
+  $work_dir        = '/usr/local/src',
+  $owner           = 'root',
+  $group           = 'root',
+  ) {
 
   class { 'repo::rdebian': release => 'unstable' }
   include repo::rcran
@@ -44,8 +50,39 @@ class brl::r {
   r::package { 'agricolae': require => Class['::r'], dependencies => true } ->
   r::package { 'abind': require => Class['::r'], dependencies => true } ->
   r::package { 'gdata': require => Class['::r'], dependencies => true } ->
-  r::package { 'h5r': require => Class['::r'], dependencies => true } ->
   r::package { 'crmn': require => Class['::r'], dependencies => true } ->
   r::package { 'metabolomics': require => Class['::r'], dependencies => true } ->
   r::package { 'plotrix': require => Class['::r'], dependencies => true }
+
+  puppi::netinstall { 'MAIT':
+    url                 => "${download_url}/MAIT_0.16.tar.gz",
+    destination_dir     => $destination_dir,
+    extracted_dir       => 'MAIT',
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+    postextract_command => 'R CMD INSTALL .',
+    require             => [Class['::r'], Class['brl::base']]
+  }
+
+  puppi::netinstall { 'h5r':
+    url                 => "${download_url}/h5r_1.4.1.tar.gz",
+    destination_dir     => $destination_dir,
+    extracted_dir       => 'h5r',
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+    postextract_command => 'R CMD INSTALL .',
+    require             => [Class['::r'], Class['brl::base']]
+  }
+
+  puppi::netinstall { 'pbh5':
+    url                 => "${download_url}/pacbio/r-pbh5/R-pbh5-master.tar.gz",
+    destination_dir     => $destination_dir,
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+    postextract_command => 'R CMD INSTALL .',
+    require             => [Class['::r'], Class['brl::base'], Puppi::Netinstall['h5r']]
+  }
 }
