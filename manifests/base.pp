@@ -32,7 +32,7 @@ class brl::base {
                 'netcdf-bin',  # pyms
                 'libnetcdf-dev',  # mzR
                 'libglu1-mesa-dev', 'mesa-common-dev',  # rgl
-                'd-compiler',
+                'gdc',
                 ]
 
   package { $packages:
