@@ -3,6 +3,7 @@ class brl::base {
 
   include ccgcommon
   include repo::multiverseubuntu
+  include perl
 
   $packages = [ 'dos2unix',
                 'libboost-all-dev',
