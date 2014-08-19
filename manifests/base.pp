@@ -32,9 +32,7 @@ class brl::base {
                 'netcdf-bin',  # pyms
                 'libnetcdf-dev',  # mzR
                 'libglu1-mesa-dev', 'mesa-common-dev',  # rgl
-                # todo
-                # trusty http://packages.ubuntu.com/trusty/d-compiler
-                #'ldc',  # sambamba
+                'd-compiler',
                 ]
 
   package { $packages:
