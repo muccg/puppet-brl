@@ -7,6 +7,15 @@ class brl::netinstall (
   $group           = 'root',
   ) {
 
+  puppi::netinstall { 'cap3':
+    url                 => "${download_url}/cap3.linux.x86_64.tar",
+    extracted_dir       => 'CAP3',
+    destination_dir     => $destination_dir,
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+  }
+
   puppi::netinstall { 'EGA_Secure_Download_Client':
     url                 => "${download_url}/EGA_Secure_Download_Client.0.3.5.tar.gz",
     destination_dir     => $destination_dir,
