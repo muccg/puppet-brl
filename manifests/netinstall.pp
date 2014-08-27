@@ -7,6 +7,17 @@ class brl::netinstall (
   $group           = 'root',
   ) {
 
+  puppi::netinstall { 'soapdevono-trans':
+    url                 => "${download_url}/SOAPdenovo-Trans-bin-v1.03.tar.gz",
+    destination_dir     => "${destination_dir}/SOAPdenovo-Trans-v1.03",
+    extracted_dir       => '.',
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+    postextract_command => '',
+    require             => Class['brl::base']
+  }
+
   puppi::netinstall { 'augustus':
     url                 => "${download_url}/augustus-3.0.2.tar.gz",
     destination_dir     => $destination_dir,
