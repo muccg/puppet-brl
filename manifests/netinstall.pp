@@ -7,6 +7,16 @@ class brl::netinstall (
   $group           = 'root',
   ) {
 
+  puppi::netinstall { 'augustus':
+    url                 => "${download_url}/augustus-3.0.2.tar.gz",
+    destination_dir     => $destination_dir,
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+    postextract_command => 'make && make install',
+    require             => Class['brl::base']
+  }
+
   puppi::netinstall { 'cap3':
     url                 => "${download_url}/cap3.linux.x86_64.tar",
     extracted_dir       => 'CAP3',
