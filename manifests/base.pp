@@ -34,6 +34,7 @@ class brl::base {
                 'libnetcdf-dev',  # mzR
                 'libglu1-mesa-dev', 'mesa-common-dev',  # rgl
                 'gdc',
+                'ncbi-blast+',
                 ]
 
   package { $packages:
