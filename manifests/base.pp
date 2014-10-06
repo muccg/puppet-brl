@@ -33,9 +33,11 @@ class brl::base {
                 'netcdf-bin',  # pyms
                 'libnetcdf-dev',  # mzR
                 'libglu1-mesa-dev', 'mesa-common-dev',  # rgl
+                'libcurl4-gnutls-dev',  # required to build R curl module
                 'gdc',
                 'ncbi-blast+',
                 'genometools',
+                'evince',
                 ]
 
   package { $packages:
