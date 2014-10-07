@@ -37,7 +37,7 @@ class brl::base {
                 'gdc',
                 'ncbi-blast+',
                 'genometools',
-                'evince',
+                'xpdf',
                 ]
 
   package { $packages:
