@@ -40,6 +40,7 @@ class brl::r (
   r::biocpackage { 'xcms': require => Class['::r'] } ->
   r::biocpackage { 'multtest': require => Class['::r'] } ->
   r::biocpackage { 'CAMERA': require => Class['::r'] } ->
+  r::biocpackage { 'GenomicRanges': require => Class['::r'] } ->
 
   r::package { 'argparse': require => Class['::r'], dependencies => true } ->
   r::package { 'caret': require => Class['::r'], dependencies => true } ->
@@ -53,6 +54,8 @@ class brl::r (
   r::package { 'crmn': require => Class['::r'], dependencies => true } ->
   r::package { 'metabolomics': require => Class['::r'], dependencies => true } ->
   r::package { 'plotrix': require => Class['::r'], dependencies => true }
+  r::package { 'gridExtra': require => Class['::r'], dependencies => true } ->
+  r::package { 'plyr': require => Class['::r'], dependencies => true } ->
 
   puppi::netinstall { 'MAIT':
     url                 => "${download_url}/MAIT_0.16.tar.gz",
