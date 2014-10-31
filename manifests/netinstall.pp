@@ -378,6 +378,30 @@ class brl::netinstall (
     require             => Class['brl::base']
   }
 
+  puppi::netinstall { 'RepeatMasker':
+    url                 => "${download_url}/RepeatMasker-open-4-0-5.tar.gz",
+    destination_dir     => $destination_dir,
+    extracted_dir       => 'RepeatMasker',
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+    require             => Class['brl::base']
+  } ->
+
+  puppi::netinstall { 'RepeatMasker Libraries':
+    url                 => "${download_url}/repeatmaskerlibraries-20140131.tar.gz",
+    destination_dir     => "$destination_dir/RepeatMasker",
+    extracted_dir       => 'Libraries',
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+  } ->
+
+  exec { 'RepeatMasker Configure':
+    command  => "perl ./configure",
+    cwd      => "${destination_dir}/RepeatMasker",
+  }
+
   # usearch, qiime dependency
   # 32 bit binary
   exec { 'wget usearch' :
