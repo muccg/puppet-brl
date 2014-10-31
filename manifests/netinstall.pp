@@ -398,8 +398,9 @@ class brl::netinstall (
   } ->
 
   exec { 'RepeatMasker Configure':
-    command  => "perl ./configure",
+    command  => "/bin/sh perl ./configure",
     cwd      => "${destination_dir}/RepeatMasker",
+    timeout  => 0,
   }
 
   # usearch, qiime dependency
