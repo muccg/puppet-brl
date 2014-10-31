@@ -390,17 +390,23 @@ class brl::netinstall (
 
   puppi::netinstall { 'RepeatMasker Libraries':
     url                 => "${download_url}/repeatmaskerlibraries-20140131.tar.gz",
-    destination_dir     => "$destination_dir/RepeatMasker",
+    destination_dir     => "${destination_dir}/RepeatMasker",
     extracted_dir       => 'Libraries',
     owner               => $owner,
     group               => $group,
     work_dir            => $work_dir,
   } ->
 
-  exec { 'RepeatMasker Configure':
-    command  => "/bin/sh perl ./configure",
-    cwd      => "${destination_dir}/RepeatMasker",
-    timeout  => 0,
+  file { "${destination_dir}/RepeatMasker/RepeatMaskerConfig.pm":
+    content  => template('brl/RepeatMaskerConfig.pm'),
+  }
+
+  # trf, RepeatMasker dependency
+  # 64 bit binary
+  exec { 'wget trf' :
+    path    => "/usr/bin:${destination_dir}/bin",
+    command => "wget ${download_url}/trf404.linux64 -O ${destination_dir}/bin/trf404",
+    unless  => "stat ${destination_dir}/bin/trf404"
   }
 
   # usearch, qiime dependency
@@ -433,6 +439,13 @@ class brl::netinstall (
       ensure  => link,
       target  => "${destination_dir}/bin/uclustq-1.2.22",
       require => Exec['wget uclust'];
+    "${destination_dir}/bin/trf404":
+      mode    => '0755',
+      require => Exec['wget trf'];
+    "${destination_dir}/bin/trf":
+      ensure  => link,
+      target  => "${destination_dir}/bin/trf404",
+      require => Exec['wget trf'];
   }
 
   exec { 'wget wublast' :
