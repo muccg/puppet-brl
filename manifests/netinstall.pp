@@ -399,6 +399,11 @@ class brl::netinstall (
 
   file { "${destination_dir}/RepeatMasker/RepeatMaskerConfig.pm":
     content  => template('brl/RepeatMaskerConfig.pm'),
+  } ->
+
+  file { "${destination_dir}/bin/RepeatMasker":
+    ensure  => link,
+    target  => "${destination_dir}/RepeatMasker/RepeatMasker"
   }
 
   # trf, RepeatMasker dependency
