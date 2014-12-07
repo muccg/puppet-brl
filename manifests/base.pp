@@ -38,6 +38,9 @@ class brl::base {
                 'ncbi-blast+',
                 'genometools',
                 'xpdf',
+                'fastx-toolkit',
+                'ncftp', 'tree',
+                'clonalframe',
                 ]
 
   package { $packages:
