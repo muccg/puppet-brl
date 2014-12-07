@@ -41,6 +41,7 @@ class brl::base {
                 'fastx-toolkit',
                 'ncftp', 'tree',
                 'clonalframe',
+                'cd-hit',
                 ]
 
   package { $packages:
