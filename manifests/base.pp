@@ -50,6 +50,9 @@ class brl::base {
   }
 
   perl::cpan::module { 'Math::Random': }
+  perl::cpan::module { 'Bio::DB::EUtilities':
+    force => true
+  }
 
   file { '/usr/local':
     ensure => directory;
