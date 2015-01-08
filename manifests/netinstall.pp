@@ -349,6 +349,15 @@ class brl::netinstall (
     require             => Class['brl::base']
   }
 
+  puppi::netinstall { 'spades35':
+    url                 => "${download_url}/SPAdes-3.5.0-Linux.tar.gz",
+    destination_dir     => $destination_dir,
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+    require             => Class['brl::base']
+  }
+
   puppi::netinstall { 'msblast':
     url                 => "${download_url}/msblast.tar.gz",
     destination_dir     => "${destination_dir}/msblast",
