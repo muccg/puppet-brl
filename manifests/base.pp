@@ -43,6 +43,7 @@ class brl::base {
                 'ncftp', 'tree',
                 'clonalframe',
                 'cd-hit',
+                'root-system',
                 ]
 
   package { $packages:
@@ -50,9 +51,12 @@ class brl::base {
   }
 
   perl::cpan::module { 'Math::Random': }
-  perl::cpan::module { 'Bio::DB::EUtilities':
-    force => true
-  }
+  # fixme: need a version of perl::cpan with force option
+  # perl::cpan::module { 'Bio::DB::EUtilities':
+  #   force => true
+  # }
+
+  perl::cpan::module { 'Archive::Zip': }
 
   file { '/usr/local':
     ensure => directory;

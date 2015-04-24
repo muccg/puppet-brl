@@ -387,6 +387,40 @@ class brl::netinstall (
     require             => Class['brl::base']
   }
 
+  $speedseq_ver = "3bbdeaf3"
+  $speedseq_home = "${destination_dir}/speedseq-${speedseq_ver}"
+  $vep_dir = "${destination_dir}/ensembl-tools-release-79/scripts/variant_effect_predictor"
+
+  puppi::netinstall { 'SpeedSeq':
+    # rodney built this from the speedseq git repo (it has submodules)
+    url                 => "${download_url}/speedseq-bin-${speedseq_ver}.tar.gz",
+    destination_dir     => $destination_dir,
+    extracted_dir       => "speedseq-${speedseq_ver}",
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+    require             => Class['brl::base']
+  } ->
+
+  file { "${speedseq_home}/bin/speedseq.config":
+    content  => template('brl/speedseq.config'),
+  } ->
+
+  file { "${speedseq_home}/annotations/vep_cache":
+    ensure => "directory",
+    mode => 0777
+  }
+
+  puppi::netinstall { 'VariantEffectPredictor':
+    url                 => "${download_url}/ensembl-tools-release-79.zip",
+    destination_dir     => $destination_dir,
+    extracted_dir       => '',
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+    require             => Class['brl::base']
+  }
+
   puppi::netinstall { 'RepeatMasker':
     url                 => "${download_url}/RepeatMasker-open-4-0-5.tar.gz",
     destination_dir     => $destination_dir,

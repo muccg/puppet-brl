@@ -42,6 +42,12 @@ class brl::python {
     require => Package['pip']
   }
 
+  # Dependency of SpeedSeq
+  python::pip { 'pysam==0.8.2.1':
+    pkgname => 'pysam==0.8.2.1',
+    require => Package['pip']
+  }
+
   python::virtualenv { '/usr/local/qiime':
     ensure       => present,
     version      => 'system',
