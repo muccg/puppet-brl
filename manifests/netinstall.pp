@@ -387,6 +387,15 @@ class brl::netinstall (
     require             => Class['brl::base']
   }
 
+  puppi::netinstall { 'qualimap':
+    url                 => "${download_url}/qualimap_v2.1.zip",
+    destination_dir     => $destination_dir,
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+    require             => Class['brl::base']
+  }
+
   $speedseq_ver = "3bbdeaf3"
   $speedseq_home = "${destination_dir}/speedseq-${speedseq_ver}"
   $vep_dir = "${destination_dir}/ensembl-tools-release-79/scripts/variant_effect_predictor"
