@@ -24,7 +24,8 @@ class brl::r (
   $r_packages = [
     'r-cran-kernsmooth', 'r-cran-foreign', 'r-cran-boot', 'r-cran-cluster', 'r-cran-class',
     'r-cran-mass', 'r-cran-matrix', 'r-cran-mgcv', 'r-cran-nlme', 'r-cran-nnet', 'r-cran-rpart',
-    'r-cran-spatial', 'r-cran-vgam', 'r-cran-getopt']
+    'r-cran-spatial', 'r-cran-vgam', 'r-cran-getopt',
+    'r-cran-optparse', 'r-cran-xml', 'r-bioc-rsamtools', 'r-bioc-rtracklayer']
 
   package { $r_packages:
     ensure  => installed,
@@ -41,6 +42,10 @@ class brl::r (
   r::biocpackage { 'multtest': require => Class['::r'] } ->
   r::biocpackage { 'CAMERA': require => Class['::r'] } ->
   r::biocpackage { 'GenomicRanges': require => Class['::r'] } ->
+  r::biocpackage { 'NOISeq': require => Class['::r'] } ->
+  r::biocpackage { 'aroma.light': require => Class['::r'] } ->
+  r::biocpackage { 'affxparser': require => Class['::r'] } ->
+  r::biocpackage { 'Repitools': require => Class['::r'] } ->
 
   r::package { 'argparse': require => Class['::r'], dependencies => true } ->
   r::package { 'caret': require => Class['::r'], dependencies => true } ->
