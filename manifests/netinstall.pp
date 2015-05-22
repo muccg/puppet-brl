@@ -440,6 +440,16 @@ class brl::netinstall (
     require             => Class['brl::base']
   }
 
+  # BRLOPS-617
+  puppi::netinstall { 'fastq-screen':
+    url                 => "${download_url}/fastq_screen_v0.4.4.tar.gz",
+    destination_dir     => $destination_dir,
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+    require             => Class['brl::base']
+  }
+
   puppi::netinstall { 'RepeatMasker':
     url                 => "${download_url}/RepeatMasker-open-4-0-5.tar.gz",
     destination_dir     => $destination_dir,
