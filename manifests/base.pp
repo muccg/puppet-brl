@@ -44,6 +44,7 @@ class brl::base {
                 'clonalframe',
                 'cd-hit',
                 'root-system',
+                'texlive',
                 ]
 
   package { $packages:
