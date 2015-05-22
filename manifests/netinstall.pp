@@ -430,6 +430,16 @@ class brl::netinstall (
     require             => Class['brl::base']
   }
 
+  puppi::netinstall { 'SNAP':
+    url                 => "${download_url}/snap-bin-2013-11-29.tar.gz",
+    destination_dir     => $destination_dir,
+    extracted_dir       => 'snap-2013-11-29',
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+    require             => Class['brl::base']
+  }
+
   puppi::netinstall { 'RepeatMasker':
     url                 => "${download_url}/RepeatMasker-open-4-0-5.tar.gz",
     destination_dir     => $destination_dir,
