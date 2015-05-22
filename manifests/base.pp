@@ -60,6 +60,9 @@ class brl::base {
   # fixme: this requirement seems to be breaking everything
   # perl::cpan::module { 'Archive::Zip': }
 
+  perl::cpan::module { 'Inline::C': }
+  perl::cpan::module { 'Perl::Unsafe::Signals': }
+
   file { '/usr/local':
     ensure => directory;
   }
