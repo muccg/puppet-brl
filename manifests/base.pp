@@ -61,8 +61,11 @@ class brl::base {
   # fixme: this requirement seems to be breaking everything
   # perl::cpan::module { 'Archive::Zip': }
 
-  perl::cpan::module { 'Inline::C': }
   perl::cpan::module { 'Perl::Unsafe::Signals': }
+
+  # fixme: this needs "cpan -f" option because its tests fail
+  perl::cpan::module { 'Inline::C': }
+
 
   file { '/usr/local':
     ensure => directory;

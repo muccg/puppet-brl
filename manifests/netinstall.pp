@@ -450,6 +450,17 @@ class brl::netinstall (
     require             => Class['brl::base']
   }
 
+  # BRLOPS-631
+  puppi::netinstall { 'maker':
+    url                 => "${download_url}/maker-2.31.8-build.tar.gz",
+    destination_dir     => $destination_dir,
+    extracted_dir       => 'maker-2.31.8',
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+    require             => Class['brl::base']
+  }
+
   puppi::netinstall { 'RepeatMasker':
     url                 => "${download_url}/RepeatMasker-open-4-0-5.tar.gz",
     destination_dir     => $destination_dir,
