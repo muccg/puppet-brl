@@ -289,6 +289,16 @@ class brl::netinstall (
     postextract_command => 'configure --prefix=/usr/local/abyss/1.3.7 && make install',
   } ->
 
+  puppi::netinstall { 'rnahybrid':
+    url                 => "${download_url}/RNAhybrid-2.1.2.tar.gz",
+    destination_dir     => $destination_dir,
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+    path                => "${destination_dir}/RNAhybrid-2.1.2:/bin:/sbin:/usr/bin:/usr/sbin",
+    postextract_command => 'configure --prefix=/usr/local/RNAhybrid/2.1.2 && make install',
+  } ->
+
   puppi::netinstall { 'quake':
     url                 => "${download_url}/quake-0.3.5.tar.gz",
     extracted_dir       => 'Quake',
