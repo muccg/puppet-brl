@@ -87,6 +87,15 @@ class brl::netinstall (
     require             => Puppi::Netinstall['velvet'],
   }
 
+  puppi::netinstall { 'freckle':
+    url                 => "${download_url}/ccgmurdoch-freckle-fd45bf544929.tar.gz",
+    destination_dir     => $destination_dir,
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+    postextract_command => "cd src/libfreckle && make tests && make && make install && cd .. && python setup.py build && python setup.py install",
+  }
+
   puppi::netinstall { 'mauve':
     url                 => "${download_url}/mauve_linux_2.3.1.tar.gz",
     extracted_dir       => 'mauve_2.3.1',

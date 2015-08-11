@@ -17,6 +17,21 @@ class brl::python {
     require => Package['pip']
   }
 
+  python::pip { 'biopython':
+    pkgname => 'biopython',
+    require => Package['pip']
+  }
+
+  python::pip { 'ctypes':
+    pkgname => 'ctypes',
+    require => Package['pip']
+  }
+
+  python::pip { 'PIL':
+    pkgname => 'PIL',
+    require => Package['pip']
+  }
+
   python::pip { 'distribute>=0.6.49':
     pkgname => 'distribute>=0.6.49',
     require => Package['pip']
@@ -27,18 +42,18 @@ class brl::python {
     require => Package['pip']
   }
 
-  python::pip { 'awscli==1.3.7':
-    pkgname => 'awscli==1.3.7',
+  python::pip { 'awscli':
+    pkgname => 'awscli',
     require => Package['pip']
   }
 
-  python::pip { 'python-keystoneclient==0.8.0':
-    pkgname => 'python-keystoneclient==0.8.0',
+  python::pip { 'python-keystoneclient':
+    pkgname => 'python-keystoneclient',
     require => Package['pip']
   }
 
-  python::pip { 'python-swiftclient==2.0.3':
-    pkgname => 'python-swiftclient==2.0.3',
+  python::pip { 'python-swiftclient':
+    pkgname => 'python-swiftclient',
     require => Package['pip']
   }
 
