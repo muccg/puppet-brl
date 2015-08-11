@@ -17,7 +17,7 @@ class brl::r (
   }
 
   class { '::r':
-    pkg     => 'r-base',
+    pkg     => 'r-base-core',
     ensure  => '3.1.3-1trusty',
     require => Package[$absent_packages],
   }
@@ -26,13 +26,15 @@ class brl::r (
     'r-cran-kernsmooth', 'r-cran-foreign', 'r-cran-boot', 'r-cran-cluster', 'r-cran-class',
     'r-cran-mass', 'r-cran-matrix', 'r-cran-mgcv', 'r-cran-nlme', 'r-cran-nnet', 'r-cran-rpart',
     'r-cran-spatial', 'r-cran-vgam', 'r-cran-getopt',
-    'r-cran-optparse', 'r-cran-xml', 'r-bioc-rsamtools', 'r-bioc-rtracklayer']
+    'r-cran-optparse', 'r-cran-xml', ]
 
   package { $r_packages:
     ensure  => installed,
     require => Class['::r']
   }
 
+  r::biocpackage { 'Rsamtools': require => Class['::r'] } ->
+  r::biocpackage { 'rtracklayer': require => Class['::r'] } ->
   r::biocpackage { 'BiocGenerics': require => Class['::r'] } ->
   r::biocpackage { 'Biobase': require => Class['::r'] } ->
   r::biocpackage { 'pcaMethods': require => Class['::r'] } ->
