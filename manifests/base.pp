@@ -21,7 +21,7 @@ class brl::base {
                 'emboss', 'blast2', 'fastqc',
                 'tcl', 'tcl-dev',
                 'hdf5-tools', 'libhdf5-serial-dev',
-                'perl', 'bioperl', 'fasttree', 'hmmer', 'gmap', 'bwa', 'phylip', 'bowtie2', 'bowtie2-examples',
+                'bioperl', 'fasttree', 'hmmer', 'gmap', 'bwa', 'phylip', 'bowtie2', 'bowtie2-examples',
                 'bowtie', 'bowtie-examples', 'clustalx', 'seaview',
                 'graphviz-doc', 'libxml-sax-expatxs-perl', 'libgd-tools',
                 'uuid', 'libapache2-mod-perl2', 'libmime-lite-perl', 'libnet-jabber-perl',
