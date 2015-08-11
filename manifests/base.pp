@@ -55,9 +55,9 @@ class brl::base {
   perl::cpan::module { 'Math::Random': }
 
   # fixme: need a version of perl::cpan with force option
-  # perl::cpan::module { 'Bio::DB::EUtilities':
-  #   force => true
-  # }
+  perl::cpan::module { 'Bio::DB::EUtilities':
+    force => true
+  }
 
   # fixme: this requirement seems to be breaking everything
   # perl::cpan::module { 'Archive::Zip': }
@@ -65,7 +65,9 @@ class brl::base {
   perl::cpan::module { 'Perl::Unsafe::Signals': }
 
   # fixme: this needs "cpan -f" option because its tests fail
-  perl::cpan::module { 'Inline::C': }
+  perl::cpan::module { 'Inline::C': 
+    force => true
+  }
 
 
   file { '/usr/local':
