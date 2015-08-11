@@ -1,7 +1,7 @@
 #
 class brl::starcluster {
 
-  $absent_packages = ['apache2', 'mysql-server-5.5', 'nginx-full', 'nginx-common', 'nginx-light']
+  $absent_packages = ['libapache2-mod-php', 'apache2', 'mysql-server-5.5', 'nginx-full', 'nginx-common', 'nginx-light']
 
   file { '/etc/environment':
     content => template('brl/environment');
