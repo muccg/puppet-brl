@@ -7,8 +7,8 @@ class brl::r (
   $group           = 'root',
   ) {
 
-  class { 'repo::repo::rdebian': release => 'unstable' }
-  include repo::repo::rcran
+  class { 'repo::rdebian': release => 'unstable' }
+  include repo::rcran
 
   $absent_packages = [ 'r-bioc-biocgenerics' ]
 
