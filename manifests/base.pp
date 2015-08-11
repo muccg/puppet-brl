@@ -45,6 +45,7 @@ class brl::base {
                 'cd-hit',
                 'root-system',
                 'texlive',
+                'mcl',  # required for orthocml
                 ]
 
   package { $packages:
