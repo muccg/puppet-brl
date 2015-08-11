@@ -2,7 +2,7 @@
 class brl::base {
 
   include ccgcommon
-  include repo::multiverseubuntu
+  include repo::repo::multiverseubuntu
   include perl
 
   $packages = [ 'dos2unix',
