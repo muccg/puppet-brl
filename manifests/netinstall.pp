@@ -87,13 +87,19 @@ class brl::netinstall (
     require             => Puppi::Netinstall['velvet'],
   }
 
+  $freckle = 'ccgmurdoch-freckle-fd45bf544929'
   puppi::netinstall { 'freckle':
-    url                 => "${download_url}/ccgmurdoch-freckle-fd45bf544929.tar.gz",
+    url                 => "${download_url}/${freckle}.tar.gz",
     destination_dir     => $destination_dir,
     owner               => $owner,
     group               => $group,
     work_dir            => $work_dir,
-    postextract_command => "cd src/libfreckle && make tests && make && make install && cd .. && python setup.py build && python setup.py install",
+    postextract_command => "python setup.py install",
+  } ->
+
+  exec { 'libfreckle':
+    cwd => "${destination_dir}/${freckle}/src/libfreckle",
+    command => 'make tests && make && make install'
   }
 
   puppi::netinstall { 'mauve':
