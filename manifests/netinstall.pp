@@ -37,6 +37,14 @@ class brl::netinstall (
     work_dir            => $work_dir,
   }
 
+  puppi::netinstall { 'orthomcl':
+    url                 => "${download_url}/orthomclSoftware-v2.0.9.tar.gz",
+    destination_dir     => $destination_dir,
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+  }
+
   puppi::netinstall { 'EGA_Secure_Download_Client':
     url                 => "${download_url}/EGA_Secure_Download_Client.0.3.5.tar.gz",
     destination_dir     => $destination_dir,
