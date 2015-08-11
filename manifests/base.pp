@@ -6,7 +6,7 @@ class brl::base {
   include perl
 
   $packages = [ 'dos2unix',
-                'libboost-all-dev',
+                'libboost-all-dev', 'liblapack-dev',
                 'libfreetype6', 'libfreetype6-dev',
                 'mailutils',
                 'python', 'python-setuptools', 'python-pip', 'python-virtualenv', 'python-matplotlib',
