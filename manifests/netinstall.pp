@@ -99,7 +99,7 @@ class brl::netinstall (
 
   exec { 'libfreckle':
     cwd => "${destination_dir}/${freckle}/src/libfreckle",
-    command => '/usr/bin/make tests && /usr/bin/make && /usr/bin/make install'
+    command => '/usr/bin/make && /usr/bin/make install'
   }
 
   puppi::netinstall { 'mauve':
