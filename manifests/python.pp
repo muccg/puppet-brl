@@ -22,11 +22,6 @@ class brl::python {
     require => Package['pip']
   }
 
-  python::pip { 'ctypes':
-    pkgname => 'ctypes',
-    require => Package['pip']
-  }
-
   python::pip { 'Pillow':
     pkgname => 'Pillow',
     require => Package['pip']
