@@ -22,16 +22,25 @@ class brl::r (
     require => Package[$absent_packages],
   }
 
-  $r_packages = [
-    'r-cran-kernsmooth', 'r-cran-foreign', 'r-cran-boot', 'r-cran-cluster', 'r-cran-class',
-    'r-cran-mass', 'r-cran-matrix', 'r-cran-mgcv', 'r-cran-nlme', 'r-cran-nnet', 'r-cran-rpart',
-    'r-cran-spatial', 'r-cran-vgam', 'r-cran-getopt',
-    'r-cran-optparse', 'r-cran-xml', ]
+  # TODO Make a futile attempt in puppet to hold back r-base-core
+  # echo "r-base-core hold" | dpkg --set-selections
 
-  package { $r_packages:
-    ensure  => installed,
-    require => Class['::r']
-  }
+  r::package { 'KernSmooth': require => Class['::r'], dependencies => true }
+  r::package { 'foreign': require => Class['::r'], dependencies => true }
+  r::package { 'boot': require => Class['::r'], dependencies => true }
+  r::package { 'cluster': require => Class['::r'], dependencies => true }
+  r::package { 'class': require => Class['::r'], dependencies => true }
+  r::package { 'MASS': require => Class['::r'], dependencies => true }
+  r::package { 'Matrix': require => Class['::r'], dependencies => true }
+  r::package { 'mgcv': require => Class['::r'], dependencies => true }
+  r::package { 'nlme': require => Class['::r'], dependencies => true }
+  r::package { 'nnet': require => Class['::r'], dependencies => true }
+  r::package { 'rpart': require => Class['::r'], dependencies => true }
+  r::package { 'spatial': require => Class['::r'], dependencies => true }
+  r::package { 'VGAM': require => Class['::r'], dependencies => true }
+  r::package { 'getopt': require => Class['::r'], dependencies => true }
+  r::package { 'optparse': require => Class['::r'], dependencies => true }
+  r::package { 'XML': require => Class['::r'], dependencies => true }
 
   r::biocpackage { 'Rsamtools': require => Class['::r'] } ->
   r::biocpackage { 'rtracklayer': require => Class['::r'] } ->
