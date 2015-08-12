@@ -12,8 +12,8 @@ class brl::python {
     require => Package['pip']
   }
 
-  python::pip { 'numpy==1.8.1':
-    pkgname => 'numpy==1.8.1',
+  python::pip { 'numpy==1.9.2':
+    pkgname => 'numpy==1.9.2',
     require => Package['pip']
   }
 
