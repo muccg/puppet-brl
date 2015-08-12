@@ -27,8 +27,8 @@ class brl::python {
     require => Package['pip']
   }
 
-  python::pip { 'PIL':
-    pkgname => 'PIL',
+  python::pip { 'Pillow':
+    pkgname => 'Pillow',
     require => Package['pip']
   }
 
