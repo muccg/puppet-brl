@@ -311,6 +311,16 @@ class brl::netinstall (
     postextract_command => 'make'
   }
 
+  puppi::netinstall { 'VeinnaRNA':
+    url                 => "${download_url}/ViennaRNA-1.8.5.tar.gz",
+    destination_dir     => $destination_dir,
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+    path                => "${destination_dir}/ViennaRNA-1.8.5:/bin:/sbin:/usr/bin:/usr/sbin",
+    postextract_command => 'configure --prefix=/usr/local/viennaRNA/1.8.5 && make install',
+  } ->
+
   puppi::netinstall { 'abyss':
     url                 => "${download_url}/abyss-1.3.7.tar.gz",
     destination_dir     => $destination_dir,
