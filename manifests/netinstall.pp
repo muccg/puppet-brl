@@ -87,6 +87,15 @@ class brl::netinstall (
     require             => Puppi::Netinstall['velvet'],
   }
 
+  puppi::netinstall { 'aofinder':
+    url                 => "${download_url}/aofinder-0.10.tar.gz",
+    destination_dir     => $destination_dir,
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+    postextract_command => "python setup.py install",
+  }
+
   $freckle = 'ccgmurdoch-freckle-fd45bf544929'
   puppi::netinstall { 'freckle':
     url                 => "${download_url}/${freckle}.tar.gz",
