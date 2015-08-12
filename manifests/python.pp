@@ -73,16 +73,16 @@ class brl::python {
     require      => [Package['pip'], Class['brl::base']]
   }
 
-  python::pip { 'numpy==1.7.1':
-    pkgname       => 'numpy==1.7.1',
+  python::pip { 'numpy==1.9.2':
+    pkgname       => 'numpy==1.9.2',
     virtualenv    => '/usr/local/qiime',
     require       => Python::Virtualenv['/usr/local/qiime']
   }
 
-  python::pip { 'qiime':
-    pkgname       => 'qiime',
+  python::pip { 'qiime==1.9.1':
+    pkgname       => 'qiime==1.9.1',
     virtualenv    => '/usr/local/qiime',
-    require       => [Python::Virtualenv['/usr/local/qiime'], Python::Pip['numpy==1.7.1']]
+    require       => [Python::Virtualenv['/usr/local/qiime'], Python::Pip['numpy==1.9.2']]
   }
 
 }
