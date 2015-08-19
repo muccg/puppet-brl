@@ -46,6 +46,7 @@ class brl::base {
                 'root-system',
                 'texlive',
                 'mcl',  # required for orthocml
+                't-coffee',
                 ]
 
   package { $packages:
