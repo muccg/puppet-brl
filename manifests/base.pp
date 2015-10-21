@@ -9,7 +9,6 @@ class brl::base {
                 'libboost-all-dev', 'liblapack-dev',
                 'libfreetype6', 'libfreetype6-dev',
                 'mailutils',
-                'python', 'python-setuptools', 'python-pip', 'python-virtualenv', 'python-matplotlib',
                 'lib32z1', 'lib32z1-dev', 'libx32z1', 'libx32z1-dev', 'zlib-bin', 'zlib1g', 'zlib1g-dev',
                 'cmake',
                 'sparsehash', 'libsparsehash-dev',
