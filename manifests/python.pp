@@ -8,6 +8,12 @@ class brl::python {
     virtualenv => 'latest',
   }
 
+  python::pip { 'pip':
+    pkgname => 'pip',
+    ensure  => 'latest',
+    require => Class['python']
+  }
+
   package { 'python-matplotlib':
     ensure   => installed,
     require  => Class['python']
@@ -15,53 +21,57 @@ class brl::python {
 
   python::pip { 'scipy':  # pyms
     pkgname => 'scipy',
-    require => Package['pip']
+    require => Python::Pip['pip']
   }
 
   python::pip { 'numpy==1.9.2':
-    pkgname => 'numpy==1.9.2',
-    require => Package['pip']
+    pkgname => 'numpy',
+    ensure  => '1.9.2',
+    require => Python::Pip['pip']
   }
 
   python::pip { 'biopython':
     pkgname => 'biopython',
-    require => Package['pip']
+    require => Python::Pip['pip']
   }
 
   python::pip { 'Pillow':
     pkgname => 'Pillow',
-    require => Package['pip']
+    require => Python::Pip['pip']
   }
 
-  python::pip { 'distribute>=0.6.49':
-    pkgname => 'distribute>=0.6.49',
-    require => Package['pip']
+  python::pip { 'distribute==0.6.49':
+    pkgname => 'distribute',
+    ensure  => '0.6.49',
+    require => Python::Pip['pip']
   } ->
 
   python::pip { 'bcbio-gff==0.4':
-    pkgname => 'bcbio-gff==0.4',
-    require => Package['pip']
+    pkgname => 'bcbio-gff',
+    ensure  => '0.4',
+    require => Python::Pip['pip']
   }
 
   python::pip { 'awscli':
     pkgname => 'awscli',
-    require => Package['pip']
+    require => Python::Pip['pip']
   }
 
   python::pip { 'python-keystoneclient':
     pkgname => 'python-keystoneclient',
-    require => Package['pip']
+    require => Python::Pip['pip']
   }
 
   python::pip { 'python-swiftclient':
     pkgname => 'python-swiftclient',
-    require => Package['pip']
+    require => Python::Pip['pip']
   }
 
   # Dependency of SpeedSeq
   python::pip { 'pysam==0.8.2.1':
-    pkgname => 'pysam==0.8.2.1',
-    require => Package['pip']
+    pkgname => 'pysam',
+    ensure  => '0.8.2.1',
+    require => Python::Pip['pip']
   }
 
   python::virtualenv { '/usr/local/qiime':
@@ -71,17 +81,19 @@ class brl::python {
     distribute   => false,
     cwd          => '/usr/local/qiime',
     timeout      => 0,
-    require      => [Package['pip'], Class['python']]
+    require      => Python::Pip['pip']
   }
 
   python::pip { 'qiime numpy==1.9.2':
-    pkgname       => 'numpy==1.9.2',
+    pkgname       => 'numpy',
+    ensure        => '1.9.2',
     virtualenv    => '/usr/local/qiime',
     require       => Python::Virtualenv['/usr/local/qiime']
   }
 
   python::pip { 'qiime==1.9.1':
-    pkgname       => 'qiime==1.9.1',
+    pkgname       => 'qiime',
+    ensure        => '1.9.1',
     virtualenv    => '/usr/local/qiime',
     require       => [Python::Virtualenv['/usr/local/qiime'], Python::Pip['numpy==1.9.2']]
   }
