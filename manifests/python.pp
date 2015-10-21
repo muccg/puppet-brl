@@ -68,9 +68,9 @@ class brl::python {
   }
 
   # Dependency of SpeedSeq
-  python::pip { 'pysam==0.8.2.1':
+  python::pip { 'pysam==0.8.3':
     pkgname => 'pysam',
-    ensure  => '0.8.2.1',
+    ensure  => '0.8.3',
     require => Python::Pip['pip']
   }
 
@@ -79,9 +79,7 @@ class brl::python {
     version      => 'system',
     systempkgs   => false,
     distribute   => false,
-    cwd          => '/usr/local/qiime',
     timeout      => 0,
-    require      => Python::Pip['pip']
   }
 
   python::pip { 'qiime numpy==1.9.2':
@@ -95,7 +93,7 @@ class brl::python {
     pkgname       => 'qiime',
     ensure        => '1.9.1',
     virtualenv    => '/usr/local/qiime',
-    require       => [Python::Virtualenv['/usr/local/qiime'], Python::Pip['numpy==1.9.2']]
+    require       => [Python::Virtualenv['/usr/local/qiime'], Python::Pip['qiime numpy==1.9.2']]
   }
 
 }
