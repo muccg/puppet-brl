@@ -24,9 +24,9 @@ class brl::python {
     require => Python::Pip['pip']
   }
 
-  python::pip { 'numpy==1.9.2':
+  python::pip { 'numpy==1.10.1':
     pkgname => 'numpy',
-    ensure  => '1.9.2',
+    ensure  => '1.10.1',
     require => Python::Pip['pip']
   }
 
@@ -82,9 +82,9 @@ class brl::python {
     timeout      => 0,
   }
 
-  python::pip { 'qiime numpy==1.9.2':
+  python::pip { 'qiime numpy==1.10.1':
     pkgname       => 'numpy',
-    ensure        => '1.9.2',
+    ensure        => '1.10.1',
     virtualenv    => '/usr/local/qiime',
     require       => Python::Virtualenv['/usr/local/qiime']
   }
@@ -93,7 +93,7 @@ class brl::python {
     pkgname       => 'qiime',
     ensure        => '1.9.1',
     virtualenv    => '/usr/local/qiime',
-    require       => [Python::Virtualenv['/usr/local/qiime'], Python::Pip['qiime numpy==1.9.2']]
+    require       => [Python::Virtualenv['/usr/local/qiime'], Python::Pip['qiime numpy==1.10.1']]
   }
 
 }
