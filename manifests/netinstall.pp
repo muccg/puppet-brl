@@ -311,7 +311,7 @@ class brl::netinstall (
     postextract_command => 'make'
   }
 
-  puppi::netinstall { 'VeinnaRNA':
+  puppi::netinstall { 'ViennaRNA':
     url                 => "${download_url}/ViennaRNA-1.8.5.tar.gz",
     destination_dir     => $destination_dir,
     owner               => $owner,
