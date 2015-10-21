@@ -1,21 +1,15 @@
 #
 class brl::python {
 
-  class { 'python' :
+  class { '::python' :
     version    => 'system',
-    pip        => 'present',
+    pip        => 'latest',
     dev        => 'present',
-    virtualenv => 'present',
+    virtualenv => 'latest',
   }
 
   package { 'python-matplotlib':
     ensure   => installed,
-    require  => Class['python']
-  }
-
-  package { 'pip':
-    ensure   => latest,
-    provider => pip,
     require  => Class['python']
   }
 
