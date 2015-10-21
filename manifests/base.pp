@@ -54,19 +54,25 @@ class brl::base {
     ensure => installed,
   }
 
-  perl::cpan::module { 'Math::Random': }
+  perl::cpan::module { 'Math::Random':
+    exec_environment => [ 'HOME=/root' ],
+  }
 
   perl::cpan::module { 'Bio::DB::EUtilities':
-    force => true
+    force => true,
+    exec_environment => [ 'HOME=/root' ],
   }
 
   # fixme: this requirement seems to be breaking everything
   # perl::cpan::module { 'Archive::Zip': }
 
-  perl::cpan::module { 'Perl::Unsafe::Signals': }
+  perl::cpan::module { 'Perl::Unsafe::Signals':
+    exec_environment => [ 'HOME=/root' ],
+  }
 
   perl::cpan::module { 'Inline::C':
-    force => true
+    force => true,
+    exec_environment => [ 'HOME=/root' ],
   }
 
 
