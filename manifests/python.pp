@@ -1,10 +1,22 @@
 #
 class brl::python {
 
+  class { 'python' :
+    version    => 'system',
+    pip        => 'present',
+    dev        => 'present',
+    virtualenv => 'present',
+  }
+
+  package { 'python-matplotlib':
+    ensure   => installed,
+    require  => Class['python']
+  }
+
   package { 'pip':
     ensure   => latest,
     provider => pip,
-    require  => Class['brl::base']
+    require  => Class['python']
   }
 
   python::pip { 'scipy':  # pyms
@@ -65,7 +77,7 @@ class brl::python {
     distribute   => false,
     cwd          => '/usr/local/qiime',
     timeout      => 0,
-    require      => [Package['pip'], Class['brl::base']]
+    require      => [Package['pip'], Class['python']]
   }
 
   python::pip { 'qiime numpy==1.9.2':
