@@ -46,6 +46,8 @@ class brl::base {
                 'texlive',
                 'mcl',  # required for orthocml
                 't-coffee',
+                # OPS-327
+                'libtbb-dev', 'libcmph-dev',
                 ]
 
   package { $packages:
