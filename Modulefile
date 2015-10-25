@@ -11,3 +11,4 @@ description  'Installs software dependencies for a range of bioinformatics tools
 dependency 'example42/perl', '>=2.0.18 <2.0.20'
 dependency 'example42/puppi', '>=2.1.9 <2.2.0'
 dependency 'stankevich/python', '>=1.9.6 <2.0.0'
+dependency 'puppetlabs/vcsrepo', '>=1.3.1 < 2.0.0'
