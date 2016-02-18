@@ -48,6 +48,8 @@ class brl::base {
                 't-coffee',
                 # OPS-327
                 'libtbb-dev', 'libcmph-dev',
+                # BRLPBCRC-25
+                'parallel',
                 ]
 
   package { $packages:
