@@ -18,7 +18,7 @@ class brl::r (
 
   class { '::r':
     pkg     => 'r-base-core',
-    ensure  => '3.2.3-6trusty0',
+    ensure  => '3.2.4-1trusty',
     require => Package[$absent_packages],
   }
 
