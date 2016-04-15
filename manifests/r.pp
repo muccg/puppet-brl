@@ -56,6 +56,7 @@ class brl::r (
   r::package { 'plotrix': require => Class['::r'], dependencies => true }
   r::package { 'gridExtra': require => Class['::r'], dependencies => true } ->
   r::package { 'plyr': require => Class['::r'], dependencies => true } ->
+  r::package { 'xtable': require => Class['::r'], dependencies => true } ->
 
   puppi::netinstall { 'MAIT':
     url                 => "${download_url}/MAIT_0.16.tar.gz",
