@@ -41,6 +41,7 @@ class brl::r (
   r::package { 'getopt': require => Class['::r'], dependencies => true }
   r::package { 'optparse': require => Class['::r'], dependencies => true }
   r::package { 'XML': require => Class['::r'], dependencies => true }
+  r::package { 'xtable': require => Class['::r'], dependencies => true }
 
   r::biocpackage { 'Rsamtools': require => Class['::r'] } ->
   r::biocpackage { 'rtracklayer': require => Class['::r'] } ->
