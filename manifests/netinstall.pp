@@ -615,4 +615,13 @@ class brl::netinstall (
     require => [Puppi::Netinstall['msblast'], Exec['tar zxvf wublast']],
   }
 
+  puppi::netinstall { 'busco':
+    url                 => "${download_url}/BUSCO_v1.22.tar.gz",
+    destination_dir     => $destination_dir,
+    owner               => $owner,
+    group               => $group,
+    work_dir            => $work_dir,
+    postextract_command => '',
+    require             => Class['brl::base']
+  }
 }

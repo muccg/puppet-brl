@@ -16,6 +16,7 @@ class brl::base {
                 'build-essential',
                 'environment-modules',
                 'checkinstall',
+                'python3',
                 #"oracle-java7-installer", # this will not install silently, asks for confirmation
                 'emboss', 'blast2', 'fastqc',
                 'tcl', 'tcl-dev',
