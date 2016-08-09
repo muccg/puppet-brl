@@ -1,5 +1,5 @@
 name         'muccg-brl'
-version      '1.1.42'
+version      '1.1.43'
 
 author       'Centre for Comparative Genomics'
 license      'GNU GPL Version 3'
