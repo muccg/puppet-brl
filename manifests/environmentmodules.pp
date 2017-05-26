@@ -1,16 +1,13 @@
 #
 class brl::environmentmodules {
 
-  mercurial::clone { 'ccgstarcluster-environment-modules':
-    hgroot     => 'https://bitbucket.org/ccgmurdoch/ccgstarcluster-environment-modules',
-    revision   => 'default',
-    pwd        => '/usr/share/modules/',
-    require    => Mercurial::Hgrc['/root/.hgrc'],
-  } ->
-
-  exec { 'copy modules into place':
-    path    => '/bin:/usr/bin',
-    command => 'cp -rp /usr/share/modules/ccgstarcluster-environment-modules/* /usr/share/modules/modulefiles/',
+  vcsrepo { '/usr/share/modules/modulefiles':
+    ensure   => latest,
+    provider => git,
+    source   => 'github.com-ccg-starcluster-environment-modules:muccg/ccg-starcluster-environment-modules.git',
+    revision => 'master',
+    user     => 'ubuntu',
+    require  => File[$puppetmaster_files],
   }
 
   exec { 'modules init':
