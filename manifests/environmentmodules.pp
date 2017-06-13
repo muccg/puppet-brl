@@ -4,7 +4,7 @@ class brl::environmentmodules {
   vcsrepo { '/usr/share/modules/modulefiles':
     ensure   => latest,
     provider => git,
-    source   => 'github.com-ccg-starcluster-environment-modules:muccg/ccg-starcluster-environment-modules.git',
+    source   => 'git@github.com-ccg-starcluster-environment-modules:muccg/ccg-starcluster-environment-modules.git',
     revision => 'master',
     user     => 'ubuntu',
   }
