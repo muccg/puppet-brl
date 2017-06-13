@@ -7,7 +7,6 @@ class brl::environmentmodules {
     source   => 'github.com-ccg-starcluster-environment-modules:muccg/ccg-starcluster-environment-modules.git',
     revision => 'master',
     user     => 'ubuntu',
-    require  => File[$puppetmaster_files],
   }
 
   exec { 'modules init':
